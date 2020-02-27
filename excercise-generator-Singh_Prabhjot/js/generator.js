@@ -3,12 +3,16 @@ function createItem(item)
     return "<li>"+item+"</li>";
 }
 
-function createList(arr)
+function createList(listArray)
 {
-    let list = "";
-    for(i=0;i < arr.length; i++)
+    let list="";
+   
+    for(i=0;i < listArray.length; i++)
     {
-        list += "<li>"+arr[i]+"</li>";
+
+        list += createItem(listArray[i]);
     }
+    
     return "<ul>"+list+"</ul>";
 }
+
