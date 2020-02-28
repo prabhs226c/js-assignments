@@ -8,10 +8,30 @@ const BOARD = [
     'of love'
 ]
 
+document.write('<ul>');
+document.write(RandomiseBoard(BOARD));
+document.write(RandomiseBoard(BOARD));
+document.write(RandomiseBoard(BOARD));
+document.write(RandomiseBoard(BOARD));
 
-document.write('<ul>');
-document.write('<li>',BOARD[0],COMMA,BOARD[1],COMMA,BOARD[2],COMMA,BOARD[3],'.</li>');
-document.write('<li>',BOARD[1],COMMA,BOARD[0],COMMA,BOARD[3],COMMA,BOARD[2],'.</li>');
-document.write('<li>',BOARD[3],COMMA,BOARD[2],COMMA,BOARD[0],COMMA,BOARD[1],'.</li>');
-document.write('<li>',BOARD[2],COMMA,BOARD[0],COMMA,BOARD[3],COMMA,BOARD[1],'.</li>');
-document.write('<ul>');
+
+function RandomiseBoard(array) {
+    let numbers = []
+    let newArray = []
+
+    for (let k = 0; k <= array.length; k++) {
+        numbers[k] = k
+    }
+
+    for (let i = 0; i < array.length; i++) {
+        let randomInt = getRandomInt(numbers.length - 1)
+        newArray[i] = array[numbers[randomInt]]
+        numbers.splice(randomInt, 1)
+    }
+
+    return ('<li>' + ' ' + newArray[0] + '' + COMMA + ' ' + newArray[1] + COMMA + ' ' + newArray[2] + COMMA + ' ' + newArray[3] + '.</li>').toString()
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
