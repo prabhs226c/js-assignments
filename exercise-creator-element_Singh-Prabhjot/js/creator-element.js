@@ -2,16 +2,31 @@
 
 const outputDiv = document.getElementById('output')
 
+
 function createWithInnerHTML(){
     
-    outputDiv.innerHTML = outputDiv.innerHTML+"<h1 class=\"inner-html\">hi</h1>"
+    let elementType = document.getElementById('elementType').value
+    let elementContent = document.getElementById('elementContent').value
+
+    if(elementContent.trim()==="")
+    {
+        alert('Please Enter Some Value')
+    }else{
+        outputDiv.innerHTML = outputDiv.innerHTML+"<"+elementType+" class=\"inner-html\">"+elementContent+"</h1>"
+    }
 }
 
 function createWithCreateElement()
 {
-    let newElemment = document.createElement('input')
-    newElemment.setAttribute('type','button')
-    newElemment.setAttribute('class','create-element')
-    newElemment.setAttribute('value','Clicky')
-    outputDiv.appendChild(newElemment)
+    let elementType = document.getElementById('elementType').value
+    let elementContent = document.getElementById('elementContent').value
+    if(elementContent.trim()==="")
+    {
+        alert('Please Enter Some Value')
+    }else{
+        let newElemment = document.createElement(elementType)
+        newElemment.setAttribute('class','create-element')
+        newElemment.innerHTML = elementContent
+        outputDiv.appendChild(newElemment)
+    }
 }
