@@ -1,3 +1,5 @@
+'use strict'
+
 document.addEventListener('DOMContentLoaded',function(){
     
     const listContainer = document.getElementById('listContainer')
