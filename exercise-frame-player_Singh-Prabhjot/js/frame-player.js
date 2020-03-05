@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded',function(){
     stopButton.addEventListener('click',function(){changeState(0)})
     
     seekBar.addEventListener('input',function(){
-        this.setAttribute('value',this.value)
+      
+        changeFrame(true)
     })
     
     function changeState(state)
@@ -29,11 +30,13 @@ document.addEventListener('DOMContentLoaded',function(){
         
     }
     
-    setInterval(() =>  {
+    setInterval(() =>  changeFrame() ,100)
+
+    function changeFrame(manual=false){
         
         let frameNumber = seekBar.value
         
-        if(frame.getAttribute('frame-state') == 1)
+        if(frame.getAttribute('frame-state') == 1 || manual === true)
         {
             frame.setAttribute('src','image/'+frameList[frameNumber-1])
             
@@ -46,5 +49,5 @@ document.addEventListener('DOMContentLoaded',function(){
             seekBar.value = frameNumber
             
         }
-    },100)
+    }
 })
