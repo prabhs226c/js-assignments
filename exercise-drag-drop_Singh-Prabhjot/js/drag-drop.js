@@ -6,13 +6,12 @@ function allowDrop(ev) {
   }
   
   function drag(ev) {
-    ev.dataTransfer.setData("Text", ev.target.id);
+    ev.dataTransfer.setData("element", ev.target.id);
   }
   
   function drop(ev) {
-    let data = ev.dataTransfer.getData("Text");
+    let data = ev.dataTransfer.getData("element");
     ev.target.appendChild(document.getElementById(data));
-    ev.preventDefault();
   }
 
   const dropArea = document.getElementById('dropArea')
