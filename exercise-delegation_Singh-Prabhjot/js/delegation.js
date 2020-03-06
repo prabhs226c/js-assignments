@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded',function(){
     {
         let node = document.createElement('li')
         node.appendChild(document.createTextNode('Product Number: '+i))
-        node.setAttribute('id','product_no_'+i)
         node.setAttribute('class','list-item')
         listContainer.appendChild(node)
     }
@@ -18,12 +17,17 @@ document.addEventListener('DOMContentLoaded',function(){
     for(let i = 0; i < LIST_SIZE; i++)
    {
        //adding event listeners to dynamically created elements
-    document.getElementById('product_no_'+i).addEventListener('click',showDetails)
+    listContainer.getElementsByTagName('li')[i].addEventListener('click',showDetails)
    }
     
+	const list = listContainer.getElementsByTagName('li')
+	
    function showDetails()
    {
-       output.innerHTML = this.innerHTML+" (ID = "+this.getAttribute('id')+")"
+	   let id = Array.prototype.slice.call(list).indexOf(this)
+	   
+       output.innerHTML = this.innerHTML+" (ID = product_no_"+id+")"
+	   
    }
     
 })
